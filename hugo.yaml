@@ -1,17 +1,10 @@
 # Hugo configuration file
-# Dev mode: hugo server --renderSegments recent
-# Only renders 2025+ content for fast preview (~70 posts instead of ~750)
-segments:
-  recent:
-    includes:
-    - kind: '{home,section,taxonomy,term}'
-    - path: '{/2025/**,/2026/**,/2027/**,/about,/archives,/akitando,/off-topic}'
-
-title: AkitaOnRails.com
+title: Meu Blog
 enableEmoji: true
 locale: "pt-BR"
 defaultContentLanguage: "pt-br"
-baseURL: "https://www.akitaonrails.com/"
+baseURL: "https://piazaopower.github.io/akitaonrails.github.io/"
+defaultContentLanguageInSubdir: true
 
 languages:
   pt-br:
@@ -24,79 +17,63 @@ languages:
           weight: 0
           params:
             type: theme-toggle
-        - name: Sobre
-          pageRef: /about
+        - name: Posts
+          pageRef: /posts
           weight: 1
-        - name: GitHub ↗
-          url: "https://github.com/akitaonrails"
+        - name: Docs
+          pageRef: /docs
           weight: 2
-          params:
-            icon: github
-        - name: Buscar
+        - name: GitHub ↗
+          url: "https://github.com/piazaopower"
           weight: 3
           params:
-            type: search
+            icon: github
         - name: RSS
           weight: 4
           url: "/index.xml"
           params:
             icon: rss
-        - name: Idioma
-          weight: 5
-          params:
-            type: language-switch
       sidebar:
         - name: GitHub
           weight: 1
-          url: "https://github.com/akitaonrails/akitaonrails.github.io"
+          url: "https://github.com/piazaopower/akitaonrails.github.io"
           params:
             icon: github
-        - name: Twitter
-          weight: 1
-          url: "https://x.com/AkitaOnRails"
-          params:
-            icon: x-twitter
-        - name: The M.Akita Chronicles
+        - name: Posts
           weight: 2
-          url: "https://themakitachronicles.com"
+          url: "/posts/"
           params:
-            icon: newspaper
-        - name: Akitando - Transcrições
+            icon: file-text
+        - name: Docs
           weight: 3
-          url: "/akitando/"
+          url: "/docs/"
           params:
-            icon: video
-        - name: Posts Off-Topic
-          weight: 4
-          url: "/off-topic/"
-          params:
-            icon: chat-bubble-left-right
+            icon: book-open
   en:
     label: "English"
     locale: "en"
     weight: 2
-    title: "AkitaOnRails.com"
+    title: "My Blog"
     contentDir: "content"
     params:
-      description: "Fabio Akita's blog — tech, career, and assorted geek topics. English edition."
+      description: "Personal blog with technical documentation, tutorials, and notes."
     menu:
       main:
         - name: Theme
           weight: 0
           params:
             type: theme-toggle
-        - name: About
-          pageRef: /en/about
+        - name: Posts
+          pageRef: /en/posts
           weight: 1
-        - name: GitHub ↗
-          url: "https://github.com/akitaonrails"
+        - name: Docs
+          pageRef: /en/docs
           weight: 2
-          params:
-            icon: github
-        - name: Search
+        - name: GitHub ↗
+          url: "https://github.com/piazaopower"
           weight: 3
           params:
-            type: search
+            icon: github
         - name: RSS
           weight: 4
           url: "/en/index.xml"
@@ -109,29 +86,19 @@ languages:
       sidebar:
         - name: GitHub
           weight: 1
-          url: "https://github.com/akitaonrails/akitaonrails.github.io"
+          url: "https://github.com/piazaopower/akitaonrails.github.io"
           params:
             icon: github
-        - name: Twitter
-          weight: 1
-          url: "https://x.com/AkitaOnRails"
-          params:
-            icon: x-twitter
-        - name: The M.Akita Chronicles
+        - name: Posts
           weight: 2
-          url: "https://themakitachronicles.com"
+          url: "/en/posts/"
           params:
-            icon: newspaper
-        - name: Akitando - Transcripts
+            icon: file-text
+        - name: Docs
           weight: 3
-          url: "/akitando/"
+          url: "/en/docs/"
           params:
-            icon: video
-        - name: Off-Topic Posts
-          weight: 4
-          url: "/en/off-topic/"
-          params:
-            icon: chat-bubble-left-right
+            icon: book-open
 
 outputs:
   home: [HTML, RSS, SearchIndex]
@@ -145,7 +112,7 @@ outputFormats:
 
 services:
   disqus:
-    shortname: akitaonrails
+    shortname: ""
 
 # import hextra as module
 module:
@@ -163,11 +130,7 @@ markup:
     noClasses: false
 
 params:
-  # Disable Hextra's built-in FlexSearch: it shipped a ~14 MB client index
-  # (full text of 760+ posts) and rebuilt it on the main thread on first
-  # keystroke, which is what made the search box feel slow. The navbar search
-  # input still renders (it's menu-driven); custom JS in head-end.html wires it
-  # to a DuckDuckGo `site:` query instead — zero payload, full-text, instant.
+  # Disable Hextra's built-in FlexSearch
   search:
     enable: false
 
@@ -180,8 +143,8 @@ params:
     displayPoweredBy: true
 
   editURL:
-    enable: false
-    base: "https://github.com/imfing/hextra-starter-template/edit/main/content"
+    enable: true
+    base: "https://github.com/piazaopower/akitaonrails.github.io/edit/main/content"
 
   # Keep default youtube shortcode as configurable
   youtubeDefaults:
@@ -193,7 +156,7 @@ params:
     default: light
 
   author:
-    name: Fabio Akita
-    email: fabioakita@gmail.com
+    name: piazaopower
+    email: ""
 
-  description: "Blog do Fabio Akita do Canal do YouTube 'Akitando' falando sobre tecnologia, carreira e coisas geek."
+  description: "Blog pessoal com documentação técnica, tutoriais e anotações."
